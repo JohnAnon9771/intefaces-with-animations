@@ -1,12 +1,8 @@
 {
   "expo": {
-    "name": "interface-animations",
-    "slug": "interface-animations",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "name": "Eu te amo",
+    "slug": "Eu-te-amo",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,11 +14,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.iloveyou.iloveyou",
+      "versionCode": 1
     }
   }
 }

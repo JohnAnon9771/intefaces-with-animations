@@ -1,12 +1,39 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { memo } from "react";
+import { ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
 
-const Card: React.FC = () => {
+import Text from "../Text";
+import { Block, BlockCard, CardImage } from "./styles";
+
+interface Props {
+  date: string;
+  source: ImageSourcePropType;
+  label: string;
+  style?: StyleProp<ViewStyle>;
+}
+
+const Card: React.FC<Props> = ({ style, source, label, date }) => {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <Block style={style}>
+      <Text>{date}</Text>
+      <BlockCard
+        style={{
+          elevation: 11,
+        }}
+      >
+        <CardImage source={source} resizeMode="contain" />
+        <Text
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 6,
+          }}
+        >
+          {label}
+        </Text>
+      </BlockCard>
+    </Block>
   );
 };
 
-export default Card;
+export default memo(Card);
