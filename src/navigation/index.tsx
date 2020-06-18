@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -9,6 +9,7 @@ import Login from "../screens/Login";
 import Home from "../screens/Home";
 
 import { color } from "../theme";
+import { StatusBar } from "react-native";
 
 export type StackParamList = {
   Home: undefined;
@@ -16,6 +17,7 @@ export type StackParamList = {
 };
 
 const BottomTabRoute: React.FC = () => {
+  useEffect(() => StatusBar.setBarStyle("light-content"), []);
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
@@ -35,8 +37,8 @@ const Routes: React.FC = () => {
         cardStyle: { backgroundColor: color.background.primary },
       }}
     >
-      <Stack.Screen name="Home" component={BottomTabRoute} />
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Home" component={BottomTabRoute} />
     </Stack.Navigator>
   );
 };

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Acrux",
-    "slug": "Gestão_de_tempo_e_lazer!",
+    "slug": "Gestão-de-tempo-e-lazer!",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",

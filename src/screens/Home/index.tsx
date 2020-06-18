@@ -1,16 +1,27 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
+import { Feather } from "@expo/vector-icons";
 
 import { StackParamList } from "../../navigation";
 
+import Text from "../../components/Text";
+import { Container, Header, Photo } from "./styles";
+
+import photo from "../../assets/photo.png";
+
+import { color } from "../../theme";
+import { StatusBar } from "react-native";
+
 type Props = StackScreenProps<StackParamList, "Home">;
 
-const Home: React.FC<Props> = () => {
+const Home: React.FC<Props> = ({ route }) => {
   return (
-    <View>
-      <Text>Hello home!</Text>
-    </View>
+    <Container style={{ backgroundColor: color.background.primary }}>
+      <Header>
+        <Photo source={photo} />
+        <Feather name="search" size={32} color={color.icons} />
+      </Header>
+    </Container>
   );
 };
 

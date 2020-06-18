@@ -1,4 +1,5 @@
 import React from "react";
+import { StatusBar } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -16,6 +17,11 @@ type Props = StackScreenProps<StackParamList, "Login">;
 const Login: React.FC<Props> = ({ navigation }) => {
   return (
     <Container>
+      <StatusBar
+        barStyle="dark-content"
+        translucent
+        backgroundColor="transparent"
+      />
       <Block style={{ backgroundColor: color.background.secundary }}>
         <Ilustration source={ilustration} resizeMode="contain" />
       </Block>
