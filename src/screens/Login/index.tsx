@@ -26,13 +26,17 @@ const Login: React.FC<Props> = ({ navigation }) => {
         <Ilustration source={ilustration} resizeMode="contain" />
       </Block>
       <BlockText>
-        <Text font="Gilroy-ExtraBold" style={{ color: color.text }} size={22}>
+        <Text
+          font="Gilroy-ExtraBold"
+          style={{ color: color.text.secondary }}
+          size={22}
+        >
           Trabalhe com Inteligência
         </Text>
-        <Text style={{ color: color.text }}>
+        <Text style={{ color: color.text.secondary }}>
           Aplicativo inteligente de gerenciamento de tarefas
         </Text>
-        <Text style={{ color: color.text }}>
+        <Text style={{ color: color.text.secondary }}>
           Agora tudo estará bem organizado {":)"}
         </Text>
       </BlockText>

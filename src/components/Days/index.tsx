@@ -19,10 +19,14 @@ const Days: React.FC<Props> = ({ date, day, isFocused }) => {
           : { borderColor: color.gray }
       }
     >
-      <Text font="Gilroy-ExtraBold" size={22} style={{ color: color.text }}>
+      <Text
+        font="Gilroy-ExtraBold"
+        size={17}
+        style={{ color: color.text.secondary }}
+      >
         {day}
       </Text>
-      <Text size={18} style={{ color: color.text }}>
+      <Text size={17} style={{ color: color.text.secondary }}>
         {date}
       </Text>
     </Container>

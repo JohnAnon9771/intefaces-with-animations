@@ -23,7 +23,21 @@ export const Photo = styled.Image`
   width: 40px;
 `;
 
-export const BlockDays = styled.View`
-  /* position: absolute; */
-  background: red;
+export const Main = styled.View`
+  background: #fff;
+  height: 70%;
+  z-index: 5;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+`;
+
+export const Content = styled.View`
+  margin: 30px;
+`;
+
+export const BlockCard = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
