@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -17,14 +17,20 @@ export type StackParamList = {
 };
 
 const BottomTabRoute: React.FC = () => {
-  useEffect(() => StatusBar.setBarStyle("light-content"), []);
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Tasks" component={Home} />
-      <Tab.Screen name="Notifications" component={Home} />
-      {/* <Tab.Screen name="Home" component={Home} /> */}
-    </Tab.Navigator>
+    <>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Tasks" component={Home} />
+        <Tab.Screen name="Notifications" component={Home} />
+        {/* <Tab.Screen name="Home" component={Home} /> */}
+      </Tab.Navigator>
+    </>
   );
 };
 
