@@ -2,7 +2,7 @@ import React from "react";
 import { StyleProp, ViewStyle } from "react-native";
 
 import Text from "../Text";
-import { Block, BlockCard } from "./styles";
+import { Block } from "./styles";
 
 import { color as colorText } from "../../theme";
 

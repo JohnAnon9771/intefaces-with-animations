@@ -7,13 +7,14 @@ import { StackParamList } from "../../navigation";
 
 import Text from "../../components/Text";
 import Days from "../../components/Days";
+import Card from "../../components/Card";
+import Tasks from "../../components/Tasks";
 import { Container, Header, Photo, Main, Content, BlockCard } from "./styles";
 
 import photo from "../../assets/photo.png";
 
 import { color } from "../../theme";
 import { data } from "../../data";
-import Card from "../../components/Card";
 
 type Props = StackScreenProps<StackParamList, "Home">;
 
@@ -58,6 +59,12 @@ const Home: React.FC<Props> = ({ route }) => {
           >
             Tarefas Ativas
           </Text>
+          <Tasks
+            title="Estudar library reanimated e praticar"
+            date="28-06-20 12:04AM"
+            author="João Alves"
+            description="Estudar"
+          />
         </Content>
       </Main>
     </Container>

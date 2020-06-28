@@ -4,6 +4,7 @@ export const color = {
     secundary: "#fff",
   },
   primary: "#2C9651",
+  red: "#f34423",
   secundary: "#E54125",
   orange: "#f29c76",
   green: "#5daf79",
