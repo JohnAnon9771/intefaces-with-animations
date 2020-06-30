@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import Animted from "react-native-reanimated";
 import { Dimensions } from "react-native";
 
 import { color } from "../../theme";
@@ -6,7 +7,7 @@ import { color } from "../../theme";
 const { height } = Dimensions.get("window");
 export const CARD_HEIGHT = height * 0.3;
 
-export const Container = styled.View`
+export const Container = styled(Animted.View)`
   background: #fff;
   padding: 15px;
   border-radius: 20px;

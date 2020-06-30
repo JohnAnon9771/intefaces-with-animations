@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import Animated from "react-native-reanimated";
 import { Feather, Ionicons } from "@expo/vector-icons";
 
 import Text from "../Text";
@@ -16,15 +17,13 @@ import {
   ButtonOnGoing,
   BlockText,
   BlockButtons,
+  CARD_HEIGHT,
 } from "./styles";
 import { color } from "../../theme";
 
-interface Props {
-  title: string;
-  date: string;
-  description: string;
-  author: string;
-}
+import { Props } from "./types";
+
+const { height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   date: {
@@ -39,9 +38,53 @@ const styles = StyleSheet.create({
   },
 });
 
-const Tasks: React.FC<Props> = ({ title, date, description, author }) => {
+const { cond, eq, set, add, Value, sub, interpolate, Extrapolate } = Animated;
+
+const Tasks: React.FC<Props> = ({
+  index,
+  y,
+  title,
+  date,
+  description,
+  author,
+}) => {
+  const position = sub(index * CARD_HEIGHT, y);
+  const isDisappearing = -CARD_HEIGHT;
+  const isTop = 0;
+  const isBottom = height - CARD_HEIGHT;
+  const isAppearing = height;
+  const translateY = add(
+    y,
+    y.interpolate({
+      inputRange: [0, index * CARD_HEIGHT],
+      outputRange: [0, -index * CARD_HEIGHT],
+      extrapolate: Extrapolate.CLAMP,
+    }),
+    interpolate(position, {
+      inputRange: [isDisappearing, isTop, isBottom, isAppearing],
+      outputRange: [0.5, 1, 1, 0.5],
+      extrapolate: Extrapolate.CLAMP,
+    })
+  );
+  const scale = interpolate(position, {
+    inputRange: [isDisappearing, isTop, isBottom, isAppearing],
+    outputRange: [0.5, 1, 1, 0.5],
+    extrapolate: Extrapolate.CLAMP,
+  });
+
+  const opacity = interpolate(position, {
+    inputRange: [isDisappearing, isTop, isBottom, isAppearing],
+    outputRange: [0.5, 1, 1, 0.5],
+    extrapolate: Extrapolate.CLAMP,
+  });
   return (
-    <Container style={{ elevation: 10 }}>
+    <Container
+      style={{
+        elevation: 10,
+        transform: [{ translateY }, { scale }],
+        opacity,
+      }}
+    >
       <Header>
         <Text font="Gilroy-ExtraBold">{title}</Text>
         <More>

@@ -1,5 +1,7 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
+import Animated from "react-native-reanimated";
+import { onScrollEvent } from "react-native-redash";
 import { StackScreenProps } from "@react-navigation/stack";
 import { Feather } from "@expo/vector-icons";
 
@@ -16,9 +18,14 @@ import photo from "../../assets/photo.png";
 import { color } from "../../theme";
 import { data } from "../../data";
 
+const { createAnimatedComponent, Value } = Animated;
+const AnimatedFlatlist = createAnimatedComponent(FlatList);
+
 type Props = StackScreenProps<StackParamList, "Home">;
 
 const Home: React.FC<Props> = ({ route }) => {
+  const y = new Value(0);
+  const onScroll = onScrollEvent({ y });
   return (
     <Container style={{ backgroundColor: color.background.primary }}>
       <Header>
@@ -59,12 +66,24 @@ const Home: React.FC<Props> = ({ route }) => {
           >
             Tarefas Ativas
           </Text>
-          <Tasks
-            title="Estudar library reanimated e praticar"
-            date="28-06-20 12:04AM"
-            author="João Alves"
-            description="Estudar"
-          />
+          <View>
+            <AnimatedFlatlist
+              {...{ onScroll }}
+              data={[1, 2, 3, 4]}
+              scrollEventThrottle={16}
+              showsVerticalScrollIndicator={false}
+              keyExtractor={(index: number) => `${index}`}
+              renderItem={({ index }) => (
+                <Tasks
+                  {...{ index, y }}
+                  title="Estudar library reanimated e praticar"
+                  date="28-06-20 12:04AM"
+                  description="Estudar"
+                  author="João Alves"
+                />
+              )}
+            />
+          </View>
         </Content>
       </Main>
     </Container>
