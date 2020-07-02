@@ -33,6 +33,7 @@ export const Main = styled.View`
 
 export const Content = styled.View`
   margin: 30px;
+  margin-bottom: 5px;
 `;
 
 export const BlockCard = styled.View`

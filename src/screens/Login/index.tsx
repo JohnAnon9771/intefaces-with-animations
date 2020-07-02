@@ -1,7 +1,10 @@
-import React from "react";
-import { StatusBar } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StatusBar, Alert } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
+import firebase from "firebase";
+import { firebaseConfig } from "../../config/firebase";
 
 import { StackParamList } from "../../navigation";
 
@@ -11,6 +14,8 @@ import { Container, Block, Ilustration, BlockText, Button } from "./styles";
 import Text from "../../components/Text";
 
 import { color } from "../../theme";
+
+firebase.initializeApp(firebaseConfig);
 
 type Props = StackScreenProps<StackParamList, "Login">;
 
@@ -44,7 +49,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
         style={{ backgroundColor: color.primary }}
         onPress={() => navigation.navigate("Home")}
       >
-        <Ionicons name="ios-arrow-forward" size={32} color={color.icons} />
+        <AntDesign name="google" size={32} color={color.icons} />
       </Button>
     </Container>
   );

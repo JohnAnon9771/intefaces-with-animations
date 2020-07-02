@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "259777454669",
+    "firebase_url": "https://acrux-b80af.firebaseio.com",
+    "project_id": "acrux-b80af",
+    "storage_bucket": "acrux-b80af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259777454669:android:4045434d1a51c9fb64f204",
+        "android_client_info": {
+          "package_name": "com.joaoalves.acrux"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259777454669-r37l8ov1aiugqi559v955ic671khcf1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXAF9qBTOKsQAxsSLPqLUo_1cdT9AiWRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259777454669-r37l8ov1aiugqi559v955ic671khcf1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,8 +4,9 @@ import { Dimensions } from "react-native";
 
 import { color } from "../../theme";
 
-const { height } = Dimensions.get("window");
+const { height, width } = Dimensions.get("window");
 export const CARD_HEIGHT = height * 0.3;
+export const CARD_WIDTH = width * 0.83;
 
 export const Container = styled(Animted.View)`
   background: #fff;
@@ -13,6 +14,7 @@ export const Container = styled(Animted.View)`
   border-radius: 20px;
   overflow: hidden;
   height: ${CARD_HEIGHT}px;
+  width: ${CARD_WIDTH}px;
   margin-top: 30px;
 `;
 

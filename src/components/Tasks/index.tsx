@@ -17,13 +17,13 @@ import {
   ButtonOnGoing,
   BlockText,
   BlockButtons,
-  CARD_HEIGHT,
+  CARD_HEIGHT as DEFAULT_CARD_HEIGHT,
 } from "./styles";
 import { color } from "../../theme";
 
 import { Props } from "./types";
 
-const { height } = Dimensions.get("window");
+const { height: wHeight } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   date: {
@@ -40,6 +40,10 @@ const styles = StyleSheet.create({
 
 const { cond, eq, set, add, Value, sub, interpolate, Extrapolate } = Animated;
 
+export const MARGIN = 16;
+export const CARD_HEIGHT = DEFAULT_CARD_HEIGHT + MARGIN * 2;
+const height = wHeight - 64;
+
 const Tasks: React.FC<Props> = ({
   index,
   y,
@@ -54,15 +58,17 @@ const Tasks: React.FC<Props> = ({
   const isBottom = height - CARD_HEIGHT;
   const isAppearing = height;
   const translateY = add(
-    y,
-    y.interpolate({
-      inputRange: [0, index * CARD_HEIGHT],
-      outputRange: [0, -index * CARD_HEIGHT],
-      extrapolate: Extrapolate.CLAMP,
-    }),
+    add(
+      y,
+      y.interpolate({
+        inputRange: [0, 0.00001 + index * CARD_HEIGHT],
+        outputRange: [0, -index * CARD_HEIGHT],
+        extrapolateRight: Extrapolate.CLAMP,
+      })
+    ),
     interpolate(position, {
-      inputRange: [isDisappearing, isTop, isBottom, isAppearing],
-      outputRange: [0.5, 1, 1, 0.5],
+      inputRange: [isBottom, isAppearing],
+      outputRange: [0, -CARD_HEIGHT / 4],
       extrapolate: Extrapolate.CLAMP,
     })
   );

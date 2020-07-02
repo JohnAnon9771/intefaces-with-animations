@@ -15,6 +15,8 @@
     "@use-expo/font": "^2.0.0",
     "expo": "~37.0.3",
     "expo-constants": "^9.0.0",
+    "expo-google-sign-in": "^8.2.1",
+    "firebase": "^7.15.5",
     "lottie-react-native": "^3.4.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",

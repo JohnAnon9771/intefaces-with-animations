@@ -17,6 +17,7 @@ import photo from "../../assets/photo.png";
 
 import { color } from "../../theme";
 import { data } from "../../data";
+import { CARD_HEIGHT } from "../../components/Tasks/styles";
 
 const { createAnimatedComponent, Value } = Animated;
 const AnimatedFlatlist = createAnimatedComponent(FlatList);
@@ -26,6 +27,7 @@ type Props = StackScreenProps<StackParamList, "Home">;
 const Home: React.FC<Props> = ({ route }) => {
   const y = new Value(0);
   const onScroll = onScrollEvent({ y });
+
   return (
     <Container style={{ backgroundColor: color.background.primary }}>
       <Header>
@@ -66,25 +68,32 @@ const Home: React.FC<Props> = ({ route }) => {
           >
             Tarefas Ativas
           </Text>
-          <View>
-            <AnimatedFlatlist
-              {...{ onScroll }}
-              data={[1, 2, 3, 4]}
-              scrollEventThrottle={16}
-              showsVerticalScrollIndicator={false}
-              keyExtractor={(index: number) => `${index}`}
-              renderItem={({ index }) => (
-                <Tasks
-                  {...{ index, y }}
-                  title="Estudar library reanimated e praticar"
-                  date="28-06-20 12:04AM"
-                  description="Estudar"
-                  author="João Alves"
-                />
-              )}
-            />
-          </View>
         </Content>
+        <AnimatedFlatlist
+          {...{ onScroll }}
+          data={[1, 2, 3, 4]}
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(index: number) => `${index}`}
+          renderItem={({ index }) => (
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                marginHorizontal: 5,
+              }}
+            >
+              <Tasks
+                {...{ index, y }}
+                title="Estudar library reanimated e praticar"
+                date="28-06-20 12:04AM"
+                description="Estudar"
+                author="João Alves"
+              />
+            </View>
+          )}
+          // style={{ marginBottom: 30 }}
+        />
       </Main>
     </Container>
   );
