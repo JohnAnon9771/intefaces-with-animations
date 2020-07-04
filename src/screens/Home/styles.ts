@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import Animated, { Transitioning } from "react-native-reanimated";
 import Constants from "expo-constants";
 
 export const Container = styled.View`
@@ -23,7 +24,7 @@ export const Photo = styled.Image`
   width: 40px;
 `;
 
-export const Main = styled.View`
+export const Main = styled(Animated.View)`
   background: #fff;
   height: 70%;
   z-index: 5;

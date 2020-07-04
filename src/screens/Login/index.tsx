@@ -20,6 +20,7 @@ firebase.initializeApp(firebaseConfig);
 type Props = StackScreenProps<StackParamList, "Login">;
 
 const Login: React.FC<Props> = ({ navigation }) => {
+  
   return (
     <Container>
       <StatusBar

@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const { cond, eq, set, add, Value, sub, interpolate, Extrapolate } = Animated;
+const { add, sub, interpolate, Extrapolate } = Animated;
 
 export const MARGIN = 16;
 export const CARD_HEIGHT = DEFAULT_CARD_HEIGHT + MARGIN * 2;

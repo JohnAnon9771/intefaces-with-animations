@@ -1,6 +1,6 @@
-import React from "react";
+import React, { createRef, useEffect, TransitionEvent } from "react";
 import { FlatList, View } from "react-native";
-import Animated from "react-native-reanimated";
+import Animated, { Transition } from "react-native-reanimated";
 import { onScrollEvent } from "react-native-redash";
 import { StackScreenProps } from "@react-navigation/stack";
 import { Feather } from "@expo/vector-icons";
@@ -17,16 +17,27 @@ import photo from "../../assets/photo.png";
 
 import { color } from "../../theme";
 import { data } from "../../data";
-import { CARD_HEIGHT } from "../../components/Tasks/styles";
 
 const { createAnimatedComponent, Value } = Animated;
 const AnimatedFlatlist = createAnimatedComponent(FlatList);
 
 type Props = StackScreenProps<StackParamList, "Home">;
 
+const transition = (
+  <Transition.Together>
+    <Transition.In
+      type="slide-bottom"
+      durationMs={2000}
+      interpolation="linear"
+    />
+  </Transition.Together>
+);
+
 const Home: React.FC<Props> = ({ route }) => {
   const y = new Value(0);
   const onScroll = onScrollEvent({ y });
+
+  const transitionRef = createRef();
 
   return (
     <Container style={{ backgroundColor: color.background.primary }}>
@@ -42,7 +53,9 @@ const Home: React.FC<Props> = ({ route }) => {
         keyExtractor={(item, index) => `${index}`}
         renderItem={({ item }) => <Days date={item.date} day={item.day} />}
       />
-      <Main>
+      <Main onLayout={({nativeEvent}) => {
+       nativeEvent.layout.y = y
+      }}>
         <Content>
           <Text
             font="Gilroy-ExtraBold"
@@ -71,11 +84,11 @@ const Home: React.FC<Props> = ({ route }) => {
         </Content>
         <AnimatedFlatlist
           {...{ onScroll }}
-          data={[1, 2, 3, 4]}
+          data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
           scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
           keyExtractor={(index: number) => `${index}`}
-          renderItem={({ index }) => (
+          renderItem={({index}) => (
             <View
               style={{
                 justifyContent: "center",
@@ -91,8 +104,7 @@ const Home: React.FC<Props> = ({ route }) => {
                 author="João Alves"
               />
             </View>
-          )}
-          // style={{ marginBottom: 30 }}
+          );}
         />
       </Main>
     </Container>
